@@ -1,19 +1,22 @@
 public class TicTacToe {
 
-    public static void main(String[] args) {
-        char[][] board = new char[3][3];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = '-';
-            }
-        }
-        System.out.println("Tic-Tac-Toe Board:");
+    static char[][] board = {
+        {'X', 'O', 'X'},
+        {'X', 'O', 'O'},
+        {'O', 'X', 'X'}
+    };
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                System.out.print(board[i][j] + " ");
+    public static void main(String[] args) {
+        System.out.println(isDraw());
+    }
+
+    static boolean isDraw() {
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
+                if (board[r][c] == '-')
+                    return false;
             }
-            System.out.println(); // new line after each row
         }
+        return true;
     }
 }
