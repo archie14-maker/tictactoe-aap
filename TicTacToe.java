@@ -1,19 +1,50 @@
-public class TicTacToe {
+import java.util.Random;
+
+public class TicTacToeUC2 {
+
+
+    static boolean isPlayer1Turn;
+    static char player1Symbol;
+    static char player2Symbol;
 
     public static void main(String[] args) {
-        char[][] board = new char[3][3];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = '-';
-            }
-        }
-        System.out.println("Tic-Tac-Toe Board:");
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                System.out.print(board[i][j] + " ");
-            }
-            System.out.println(); // new line after each row
+
+        tossAndAssign();
+
+
+        displayResult();
+    }
+
+
+    static void tossAndAssign() {
+
+        Random rand = new Random();
+
+
+        int toss = rand.nextInt(2);
+
+        if (toss == 0) {
+            isPlayer1Turn = true;
+            player1Symbol = 'X';
+            player2Symbol = 'O';
+        } else {
+            isPlayer1Turn = false;
+            player1Symbol = 'O';
+            player2Symbol = 'X';
         }
+    }
+
+
+    static void displayResult() {
+
+        if (isPlayer1Turn) {
+            System.out.println("Player 1 starts first!");
+        } else {
+            System.out.println("Player 2 starts first!");
+        }
+
+        System.out.println("Player 1 Symbol: " + player1Symbol);
+        System.out.println("Player 2 Symbol: " + player2Symbol);
     }
 }
