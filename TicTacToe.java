@@ -1,19 +1,32 @@
-public class TicTacToe {
+public class TicTacToeUC5 {
+
+    // 3x3 board with empty cells '-'
+    static char[][] board = {
+        {'-', '-', '-'},
+        {'-', '-', '-'},
+        {'-', '-', '-'}
+    };
 
     public static void main(String[] args) {
-        char[][] board = new char[3][3];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = '-';
-            }
-        }
-        System.out.println("Tic-Tac-Toe Board:");
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                System.out.print(board[i][j] + " ");
-            }
-            System.out.println(); // new line after each row
+        int row = 1;
+        int col = 1;
+
+        boolean result = isValidMove(row, col);
+
+        System.out.println("Move at (" + row + "," + col + ") valid? " + result);
+    }
+
+    static boolean isValidMove(int row, int col) {
+
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
         }
+
+        if (board[row][col] != '-') {
+            return false;
+        }
+
+        return true;
     }
 }
